@@ -1,0 +1,32 @@
+{
+  "name": "tezign-react-practice",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@douyinfe/semi-icons": "^2.55.5",
+    "@douyinfe/semi-icons-lab": "^2.55.5",
+    "@douyinfe/semi-ui": "^2.55.5",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.6.1",
+    "yarn": "^1.22.19"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@vitejs/plugin-react": "^3.0.0",
+    "sass": "^1.74.1",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
+  }
+}
