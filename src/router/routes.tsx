@@ -1,88 +1,92 @@
-import React, { FC, lazy, ReactElement, Suspense } from 'react';
-import { useRoutes } from 'react-router-dom';
-import { Spin } from '@douyinfe/semi-ui';
-import Layout from '../components/Layout';
-import { IconDescriptions } from '@douyinfe/semi-icons-lab';
+import React, { FC, lazy, ReactElement } from 'react';
+import { RouteObject, useRoutes } from 'react-router-dom';
+import { Button, Empty } from '@douyinfe/semi-ui';
+import { IconConfig, IconNavigation } from '@douyinfe/semi-icons-lab';
+import { IllustrationNotFound, IllustrationNotFoundDark } from '@douyinfe/semi-illustrations';
+import Wrapper from './wrapper';
 
 // 使用懒加载导入页面组件
-const Test1 = lazy(() => import('@/src/pages/test1'));
-const Test2 = lazy(() => import('@/src/pages/test2'));
+const Layout = lazy(() => import('@/src/pages/layout'));
+const Login = lazy(() => import('@/src/pages/login'));
+const Analysis = lazy(() => import('@/src/pages/analysis'));
+const Workbench = lazy(() => import('@/src/pages/workbench'));
+const Setting = lazy(() => import('@/src/pages/setting'));
 
 export interface IRouters {
-  path: string;
-  element: ReactElement;
-  text?: string;
+  text: string;
   icon?: ReactElement;
   items?: IRouters[];
-  itemKey?: string;
-  children?: IRouters[];
+  itemKey: string;
 }
-// 定义路由配置
-const routes: IRouters[] = [
+// 左侧导航路由
+export const MenuRoutes: IRouters[] = [
   {
-    path: '/',
-    element: <Test1 />,
-    icon: <IconDescriptions />,
-    text: 'Dashboard'
-  },
-  {
-    path: '/test1',
-    element: <Test1 />,
-    icon: <IconDescriptions />,
-    text: 'Dashboard'
-  },
-  {
-    path: '/test2',
-    element: <Test2 />,
-    icon: <IconDescriptions />,
+    itemKey: '/',
+    icon: <IconNavigation />,
     text: 'Dashboard',
-    children: [
+    items: [
       {
-        path: '/test2/test1',
-        element: <Test1 />,
-        text: 'Dashboard'
+        itemKey: '/dashboard/analysis',
+        text: '分析页'
       },
       {
-        path: '/test2/test2',
-        element: <Test1 />,
-        text: 'Dashboard'
+        itemKey: '/dashboard/workbench',
+        text: '工作台'
       },
     ]
   },
+  {
+    itemKey: '/setting',
+    icon: <IconConfig />,
+    text: '设置'
+  }
 ];
 
-const recursiveFormat = (items: IRouters[]) => {
-  const formatResult = items.map((item, index) => {
-    item.itemKey = item.path;
-    item.items = item.children;
-    if (item.items) {
-      item.items = recursiveFormat(item.items);
-    }
-    return item;
-  });
-  return formatResult;
-}
-
-export const formatMenus = () => {
-  return recursiveFormat(routes)
-};
+// 浏览器路由
+const routers: RouteObject[] = [
+  {
+    path: '/',
+    element: <Wrapper component={<Layout />} />,
+    // 导航内的路由写在这里，同时要添加到Menu中
+    children: [
+      {
+        path: 'dashboard/analysis',
+        element: <Wrapper component={<Analysis />} />
+      },
+      {
+        path: 'dashboard/workbench',
+        element: <Wrapper component={<Workbench />} />
+      },
+      {
+        path: 'setting',
+        element: <Wrapper component={<Setting />} auth />
+      }
+    ]
+  },
+  // 导航外写这里
+  {
+    path: '/login',
+    element: <Login />
+  },
+  // 兜底页面，需要放在最下方
+  {
+    path: '*',
+    element: (
+      <div className='w-screen h-screen flex flex-col items-center justify-center'>
+        <Empty
+          image={<IllustrationNotFound style={{ width: 150, height: 150 }} />}
+          darkModeImage={<IllustrationNotFoundDark style={{ width: 150, height: 150 }} />}
+          description={'页面找不到嘞~'}
+        />
+      </div>
+    )
+  }
+]
 
 const RenderRouter: FC = () => {
   // 使用 useRoutes 钩子生成路由元素
-  const element = useRoutes(routes);
-
-  // 使用 Suspense 包裹懒加载的组件，并提供 fallback
-  return (
-    <Suspense fallback={
-      <div className='w-screen h-screen flex justify-center items-center'>
-        <Spin size="large" />
-      </div>}
-    >
-      <Layout>
-        {element}
-      </Layout>
-    </Suspense>
-  );
+  const element = useRoutes(routers);
+  return element;
 };
 
 export default RenderRouter;

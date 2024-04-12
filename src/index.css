@@ -30,6 +30,8 @@ a:hover {
 body {
   min-width: 320px;
   min-height: 100vh;
+  color: var(--semi-color-text-0);
+  background-color: var( --semi-color-bg-0);
 }
 
 h1 {

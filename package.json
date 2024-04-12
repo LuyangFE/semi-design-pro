@@ -11,6 +11,7 @@
   "dependencies": {
     "@douyinfe/semi-icons": "^2.55.5",
     "@douyinfe/semi-icons-lab": "^2.55.5",
+    "@douyinfe/semi-illustrations": "^2.55.5",
     "@douyinfe/semi-ui": "^2.55.5",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",

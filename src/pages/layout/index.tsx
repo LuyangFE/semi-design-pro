@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Nav, Layout as MainLayout, Avatar, Dropdown, Button, Tooltip } from "@douyinfe/semi-ui";
+import React, { Suspense, useEffect, useState } from "react";
+import { Nav, Layout as MainLayout, Avatar, Dropdown, Button, Tooltip, Spin } from "@douyinfe/semi-ui";
 import { IconSemiLogo, IconMoon, IconSetting, IconBell } from "@douyinfe/semi-icons";
 import avatarImg from '@/src/assets/avatar.jpg';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { formatMenus } from '@/src/router/routes';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { MenuRoutes } from '@/src/router/routes';
 import { OnSelectedData } from "@douyinfe/semi-ui/lib/es/navigation";
 
 const { Header, Sider, Content } = MainLayout;
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-export default function Layout({ children }: LayoutProps) {
+export default function Layout() {
   const navigate = useNavigate();
   const { pathname } = useLocation()
   const [isDark, setIsDark] = useState<Boolean>(false);
@@ -77,14 +73,15 @@ export default function Layout({ children }: LayoutProps) {
   }
 
   const onSelect = (data: OnSelectedData) => {
-    console.log(data)
+    // 设置浏览器title
+    document.title = `Semi UI Pro-${data.selectedItems[0].text}`
     setPathKey([...data.selectedKeys])
 		navigate(data.itemKey as string)
   }
 
   useEffect(() => {
     setPathKey([pathname]);
-  }, []);
+  }, [pathname]);
   return (
     <MainLayout>
       <Header>
@@ -116,13 +113,24 @@ export default function Layout({ children }: LayoutProps) {
       <MainLayout>
         <Sider>
         <Nav
+          mode='vertical'
+          style={{ height: 'calc(100vh - 60px)' }}
           selectedKeys={pathKey}
-          items={formatMenus()}
+          items={MenuRoutes}
           onSelect={(data) => onSelect(data)}
+          footer={{
+            collapseButton: true,
+          }}
         />
         </Sider>
         <Content className="px-16 py-12">
-          {children}
+          <Suspense fallback={
+            <div className='w-full h-full flex justify-center items-center'>
+              <Spin size="large" />
+            </div>}
+          >
+            <Outlet />
+          </Suspense>
         </Content>
       </MainLayout>
     </MainLayout>
