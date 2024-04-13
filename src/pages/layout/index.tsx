@@ -1,18 +1,20 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { Nav, Layout as MainLayout, Avatar, Dropdown, Button, Tooltip, Spin } from "@douyinfe/semi-ui";
+import { Nav, Layout as MainLayout, Avatar, Dropdown, Button, Tooltip, Spin, Popover } from "@douyinfe/semi-ui";
 import { IconSemiLogo, IconMoon, IconSetting, IconBell } from "@douyinfe/semi-icons";
 import avatarImg from '@/src/assets/avatar.jpg';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { MenuRoutes } from '@/src/router/routes';
 import { OnSelectedData } from "@douyinfe/semi-ui/lib/es/navigation";
+import { NotificationContent } from "./components/NotificationContent";
 
 const { Header, Sider, Content } = MainLayout;
 
 export default function Layout() {
   const navigate = useNavigate();
   const { pathname } = useLocation()
-  const [isDark, setIsDark] = useState<Boolean>(false);
+  const [isDark, setIsDark] = useState<boolean>(false);
   const [pathKey, setPathKey] = useState<React.ReactText[]>([]);
+  const [showBell, setShowBell] = useState<boolean>(false);
 
   const changeMode = () => {
     setIsDark(!isDark);
@@ -29,14 +31,30 @@ export default function Layout() {
   }
 
   const showNotices = () => {
-    console.log('Click Bell!')
+    setShowBell(true);
+  }
+
+  const logout = () => {
+    window.localStorage.removeItem('isLogin');
+    navigate('/userCenter/login');
   }
 
   const IconButtons = [
     {
-      icon: <IconBell size="extra-large" />,
+      icon: (
+        <Popover
+          onClickOutSide={() => setShowBell(false)}
+          visible={showBell}
+          content={<NotificationContent/>}
+          trigger="custom"
+          clickToHide={false}
+          className="w-[500px] h-80 overflow-auto"
+        >
+          <IconBell size="extra-large" />
+        </Popover>
+      ),
       event: () => showNotices(),
-      tip: '消息通知'
+      // tip: '消息通知'
     },
     {
       icon: <IconMoon size="extra-large" />,
@@ -56,8 +74,8 @@ export default function Layout() {
       <div className="flex gap-2 mr-4">
         {
           IconButtons.map((item, index) => {
-            return (
-              <Tooltip content={item.tip} key={index}>
+            return item?.tip ? (
+              <Tooltip content={item?.tip} key={index}>
                 <Button
                   theme="borderless"
                   icon={item.icon}
@@ -65,6 +83,14 @@ export default function Layout() {
                   type="tertiary"
                 />
               </Tooltip>
+            ) : (
+              <Button
+                key={index}
+                theme="borderless"
+                icon={item.icon}
+                onClick={item.event}
+                type="tertiary"
+              />
             )
           })
         }
@@ -100,7 +126,7 @@ export default function Layout() {
                 render={
                   <Dropdown.Menu>
                     <Dropdown.Item>详情</Dropdown.Item>
-                    <Dropdown.Item>退出</Dropdown.Item>
+                    <Dropdown.Item onClick={logout}>退出</Dropdown.Item>
                   </Dropdown.Menu>
                 }
               >

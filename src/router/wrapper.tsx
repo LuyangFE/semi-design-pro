@@ -8,14 +8,14 @@ interface IProps {
   component: React.ReactNode;
   auth?: boolean;
 }
-export default function Wrapper(props: IProps) {
+function Wrapper(props: IProps) {
   const { component, auth = false } = props;
   const { pathname } = useLocation();
-  const isLogin = false;
+  const isLogin = window.localStorage.getItem('isLogin');
 
   // 登录校验
   if (auth && !isLogin) {
-    return <Navigate to='/login' />
+    return <Navigate to='/userCenter/login' />
   }
   // 重定向
   if (pathname === '/') {
@@ -23,3 +23,4 @@ export default function Wrapper(props: IProps) {
   }
   return component;
 };
+export { Wrapper }

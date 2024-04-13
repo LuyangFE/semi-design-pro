@@ -4,7 +4,7 @@ import { IconUser, IconKey, IconFeishuLogo } from '@douyinfe/semi-icons';
 import { useNavigate } from 'react-router-dom';
 
 const { Text }  = Typography;
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate();
   const [account, setAccount] = useState<string>();
   const [password, setPassword] = useState<string>();
@@ -19,7 +19,7 @@ const Login = () => {
   }
   return (
     <div className='p-8 flex flex-col gap-8' style={{ border: '1px solid var(--semi-color-border)', minWidth: '33%' }}>
-      <span className='text-2xl font-bold'>登录</span>
+      <span className='text-2xl font-bold'>注册</span>
       <Input
         className='h-10'
         prefix={<IconUser />}
@@ -35,14 +35,13 @@ const Login = () => {
         mode='password'
         onChange={(e) => setPassword(e)}
       />
-      <div className='flex w-full justify-between'>
-        <Text link={{ href: '/userCenter/register' }}>注册</Text>
-        <Text link={{ href: 'https://semi.design/' }}>忘记密码</Text>
+      <div className='flex w-full justify-end'>
+        <Text link={{ href: '/userCenter/login' }}>去登录</Text>
       </div>
-      <Button type='primary' theme='solid' className='w-full h-10' onClick={login}>登录</Button>
-      <Divider />
-      <Button type='tertiary' className='w-full h-10' icon={<IconFeishuLogo />}>飞书登录</Button>
+      <Button type='primary' theme='solid' className='w-full h-10' onClick={login}>注册</Button>
+      {/* <Divider /> */}
+      {/* <Button type='tertiary' className='w-full h-10' icon={<IconFeishuLogo />}>飞书登录</Button> */}
     </div>
   );
 };
-export default Login;
+export default Register;

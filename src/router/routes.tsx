@@ -3,14 +3,18 @@ import { RouteObject, useRoutes } from 'react-router-dom';
 import { Button, Empty } from '@douyinfe/semi-ui';
 import { IconConfig, IconNavigation } from '@douyinfe/semi-icons-lab';
 import { IllustrationNotFound, IllustrationNotFoundDark } from '@douyinfe/semi-illustrations';
-import Wrapper from './wrapper';
+import { Wrapper } from './wrapper';
 
 // 使用懒加载导入页面组件
 const Layout = lazy(() => import('@/src/pages/layout'));
-const Login = lazy(() => import('@/src/pages/login'));
+const LayoutWithTopNav = lazy(() => import('@/src/pages/layout/layoutWithTopNav'));
+
 const Analysis = lazy(() => import('@/src/pages/analysis'));
 const Workbench = lazy(() => import('@/src/pages/workbench'));
 const Setting = lazy(() => import('@/src/pages/setting'));
+
+const Login = lazy(() => import('@/src/pages/login'));
+const Register = lazy(() => import('@/src/pages/register'));
 
 export interface IRouters {
   text: string;
@@ -63,10 +67,20 @@ const routers: RouteObject[] = [
       }
     ]
   },
-  // 导航外写这里
+  // 有顶部导航，没有侧边导航写这里
   {
-    path: '/login',
-    element: <Login />
+    path: '/userCenter',
+    element: <LayoutWithTopNav />,
+    children: [
+      {
+        path: 'login',
+        element: <Wrapper component={<Login />} />
+      },
+      {
+        path: 'register',
+        element: <Wrapper component={<Register />} />
+      },
+    ]
   },
   // 兜底页面，需要放在最下方
   {
