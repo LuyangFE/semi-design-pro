@@ -18,7 +18,7 @@ function Wrapper(props: IProps) {
     return <Navigate to='/userCenter/login' />
   }
   // 重定向
-  if (pathname === '/') {
+  if (pathname === '/' || pathname === 'dashboard') {
     return <Navigate to='/dashboard/analysis' />
   }
   return component;

@@ -11,7 +11,7 @@ const { Header, Sider, Content } = MainLayout;
 
 export default function Layout() {
   const navigate = useNavigate();
-  const { pathname } = useLocation()
+  const { pathname } = useLocation();
   const [isDark, setIsDark] = useState<boolean>(false);
   const [pathKey, setPathKey] = useState<React.ReactText[]>([]);
   const [showBell, setShowBell] = useState<boolean>(false);
@@ -100,7 +100,7 @@ export default function Layout() {
 
   const onSelect = (data: OnSelectedData) => {
     // 设置浏览器title
-    document.title = `Semi UI Pro-${data.selectedItems[0].text}`
+    document.title = `${data.selectedItems[0].text}-Semi UI Pro`
     setPathKey([...data.selectedKeys])
 		navigate(data.itemKey as string)
   }
@@ -139,8 +139,9 @@ export default function Layout() {
       <MainLayout>
         <Sider>
         <Nav
+          defaultIsCollapsed
           mode='vertical'
-          style={{ height: 'calc(100vh - 60px)' }}
+          style={{ height: '100%', minHeight: 'calc(100vh - 60px)' }}
           selectedKeys={pathKey}
           items={MenuRoutes}
           onSelect={(data) => onSelect(data)}
@@ -149,7 +150,7 @@ export default function Layout() {
           }}
         />
         </Sider>
-        <Content className="px-16 py-12">
+        <Content className="px-8 py-6">
           <Suspense fallback={
             <div className='w-full h-full flex justify-center items-center'>
               <Spin size="large" />
