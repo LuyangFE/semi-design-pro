@@ -5,6 +5,7 @@ import { OverviewStatic } from './components/OverviewStatic';
 import { TodoList } from './components/TodoList';
 import { CardGroups } from './components/CardGroups';
 import { DateOverview } from './components/DateOverview';
+import { Entrance } from './components/Entrance';
 
 const { Title } = Typography;
 const Workbench = () => {
@@ -15,12 +16,13 @@ const Workbench = () => {
         <Col span={18} className='flex flex-col gap-8'>
           <OverviewStatic treated={203} ongoing={301} onWaiting={86} />
           <TodoList />
-          <Title heading={3}>进行中的项目</Title>
+          {/* <Title heading={3}>进行中的项目</Title> */}
           <CardGroups />
         </Col>
         <Col span={6} className='flex flex-col gap-8'>
           <UserInfo name='彭于晏' title='前端工程师' />
           <DateOverview />
+          <Entrance />
         </Col>
       </Row>
     </div>

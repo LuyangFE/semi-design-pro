@@ -1,7 +1,8 @@
 /**
  * @description 路由组件包裹页，用于重定向和鉴权等
  */
-import React from 'react';
+import { Spin } from '@douyinfe/semi-ui';
+import React, { Suspense } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
 interface IProps {
@@ -20,7 +21,8 @@ function Wrapper(props: IProps) {
   // 重定向
   if (pathname === '/' || pathname === 'dashboard') {
     return <Navigate to='/dashboard/analysis' />
+  } else {
+    return component;
   }
-  return component;
 };
 export { Wrapper }

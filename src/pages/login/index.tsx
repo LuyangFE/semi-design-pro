@@ -18,7 +18,7 @@ const Login = () => {
     }
   }
   return (
-    <div className='p-8 flex flex-col gap-8' style={{ border: '1px solid var(--semi-color-border)', minWidth: '33%' }}>
+    <div className='flex flex-col gap-8 p-8 bg-[var(--semi-color-white)] w-[600px] h-[500px]' style={{ border: '1px solid var(--semi-color-border)' }}>
       <span className='text-2xl font-bold'>登录</span>
       <Input
         className='h-10'
@@ -35,7 +35,7 @@ const Login = () => {
         mode='password'
         onChange={(e) => setPassword(e)}
       />
-      <div className='flex w-full justify-between'>
+      <div className='flex justify-between w-full'>
         <Text link={{ href: '/userCenter/register' }}>注册</Text>
         <Text link={{ href: 'https://semi.design/' }}>忘记密码</Text>
       </div>

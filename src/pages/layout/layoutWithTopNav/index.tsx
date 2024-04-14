@@ -19,7 +19,7 @@ const LayoutWithTopNav = () => {
     }
   }
   return (
-    <Layout>
+    <Layout className='bg-[var(--semi-color-tertiary-light-default)] h-screen'>
       <Header>
         <Nav
           mode='horizontal'
@@ -29,16 +29,10 @@ const LayoutWithTopNav = () => {
           }}
         />
       </Header>
-      <Content className='w-screen mt-24 flex justify-center'>
-        <Suspense fallback={
-          <div className='w-full h-full flex justify-center items-center'>
-            <Spin size="large" />
-          </div>}
-        >
-          <Outlet />
-        </Suspense>
+      <Content className='flex items-center justify-center w-screen mt-24'>
+        <Outlet />
       </Content>
-      <Footer className='flex w-full justify-center mt-12 items-center gap-2'>
+      <Footer className='flex items-center justify-center w-full gap-2 mt-12'>
         <IconSemiLogo />
         Semi UI Pro
       </Footer>

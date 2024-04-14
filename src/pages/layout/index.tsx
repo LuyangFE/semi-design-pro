@@ -1,9 +1,23 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { Nav, Layout as MainLayout, Avatar, Dropdown, Button, Tooltip, Spin, Popover } from "@douyinfe/semi-ui";
-import { IconSemiLogo, IconMoon, IconSetting, IconBell } from "@douyinfe/semi-icons";
-import avatarImg from '@/src/assets/avatar.jpg';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { MenuRoutes } from '@/src/router/routes';
+import {
+  Nav,
+  Layout as MainLayout,
+  Avatar,
+  Dropdown,
+  Button,
+  Tooltip,
+  Spin,
+  Popover,
+} from "@douyinfe/semi-ui";
+import {
+  IconSemiLogo,
+  IconMoon,
+  IconSetting,
+  IconBell,
+} from "@douyinfe/semi-icons";
+import avatarImg from "@/src/assets/avatar.jpg";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { MenuRoutes } from "@/src/router/routes";
 import { OnSelectedData } from "@douyinfe/semi-ui/lib/es/navigation";
 import { NotificationContent } from "./components/NotificationContent";
 
@@ -19,25 +33,25 @@ export default function Layout() {
   const changeMode = () => {
     setIsDark(!isDark);
     const body = document.body;
-    if (body.hasAttribute('theme-mode')) {
-        body.removeAttribute('theme-mode');
+    if (body.hasAttribute("theme-mode")) {
+      body.removeAttribute("theme-mode");
     } else {
-        body.setAttribute('theme-mode', 'dark');
+      body.setAttribute("theme-mode", "dark");
     }
-  }
+  };
 
   const goSetting = () => {
-    console.log('Click Setting!')
-  }
+    console.log("Click Setting!");
+  };
 
   const showNotices = () => {
     setShowBell(true);
-  }
+  };
 
   const logout = () => {
-    window.localStorage.removeItem('isLogin');
-    navigate('/userCenter/login');
-  }
+    window.localStorage.removeItem("isLogin");
+    navigate("/userCenter/login");
+  };
 
   const IconButtons = [
     {
@@ -45,7 +59,7 @@ export default function Layout() {
         <Popover
           onClickOutSide={() => setShowBell(false)}
           visible={showBell}
-          content={<NotificationContent/>}
+          content={<NotificationContent />}
           trigger="custom"
           clickToHide={false}
           className="w-[500px] h-80 overflow-auto"
@@ -59,57 +73,55 @@ export default function Layout() {
     {
       icon: <IconMoon size="extra-large" />,
       event: () => changeMode(),
-      tip: `切换到${isDark ? '亮色' : '暗色'}模式`
+      tip: `切换到${isDark ? "亮色" : "暗色"}模式`,
     },
     {
       icon: <IconSetting size="extra-large" />,
       event: () => goSetting(),
-      tip: '设置'
-    }
-  ]
-  
+      tip: "设置",
+    },
+  ];
+
   // 顶部导航右侧icon按钮
   const renderIcons = () => {
     return (
       <div className="flex gap-2 mr-4">
-        {
-          IconButtons.map((item, index) => {
-            return item?.tip ? (
-              <Tooltip content={item?.tip} key={index}>
-                <Button
-                  theme="borderless"
-                  icon={item.icon}
-                  onClick={item.event}
-                  type="tertiary"
-                />
-              </Tooltip>
-            ) : (
+        {IconButtons.map((item, index) => {
+          return item?.tip ? (
+            <Tooltip content={item?.tip} key={index}>
               <Button
-                key={index}
                 theme="borderless"
                 icon={item.icon}
                 onClick={item.event}
                 type="tertiary"
               />
-            )
-          })
-        }
+            </Tooltip>
+          ) : (
+            <Button
+              key={index}
+              theme="borderless"
+              icon={item.icon}
+              onClick={item.event}
+              type="tertiary"
+            />
+          );
+        })}
       </div>
-    )
-  }
+    );
+  };
 
   const onSelect = (data: OnSelectedData) => {
     // 设置浏览器title
-    document.title = `${data.selectedItems[0].text}-Semi UI Pro`
-    setPathKey([...data.selectedKeys])
-		navigate(data.itemKey as string)
-  }
+    document.title = `${data.selectedItems[0].text}-Semi UI Pro`;
+    setPathKey([...data.selectedKeys]);
+    navigate(data.itemKey as string);
+  };
 
   useEffect(() => {
     setPathKey([pathname]);
   }, [pathname]);
   return (
-    <MainLayout>
+    <MainLayout className="bg-[var(--semi-color-tertiary-light-default)]">
       <Header>
         <Nav
           className="min-w-screen"
@@ -130,7 +142,12 @@ export default function Layout() {
                   </Dropdown.Menu>
                 }
               >
-                <Avatar size="small" color='light-blue' style={{ margin: 4 }} src={avatarImg} />
+                <Avatar
+                  size="small"
+                  color="light-blue"
+                  style={{ margin: 4 }}
+                  src={avatarImg}
+                />
               </Dropdown>
             </>
           }
@@ -138,23 +155,25 @@ export default function Layout() {
       </Header>
       <MainLayout>
         <Sider>
-        <Nav
-          defaultIsCollapsed
-          mode='vertical'
-          style={{ height: '100%', minHeight: 'calc(100vh - 60px)' }}
-          selectedKeys={pathKey}
-          items={MenuRoutes}
-          onSelect={(data) => onSelect(data)}
-          footer={{
-            collapseButton: true,
-          }}
-        />
+          <Nav
+            defaultIsCollapsed
+            mode="vertical"
+            style={{ height: "100%", minHeight: "calc(100vh - 60px)" }}
+            selectedKeys={pathKey}
+            items={MenuRoutes}
+            onSelect={(data) => onSelect(data)}
+            footer={{
+              collapseButton: true,
+            }}
+          />
         </Sider>
         <Content className="px-8 py-6">
-          <Suspense fallback={
-            <div className='w-full h-full flex justify-center items-center'>
-              <Spin size="large" />
-            </div>}
+          <Suspense
+            fallback={
+              <div className="flex items-center justify-center w-screen h-screen">
+                <Spin />
+              </div>
+            }
           >
             <Outlet />
           </Suspense>
@@ -162,4 +181,4 @@ export default function Layout() {
       </MainLayout>
     </MainLayout>
   );
-};
+}
