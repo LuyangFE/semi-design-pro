@@ -1,15 +1,14 @@
 /**
  * @description 路由组件包裹页，用于重定向和鉴权等
  */
-import { Spin } from '@douyinfe/semi-ui';
-import React, { Suspense } from 'react';
+import React, { FC, Suspense } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
 interface IProps {
-  component: React.ReactNode;
+  component: JSX.Element;
   auth?: boolean;
 }
-function Wrapper(props: IProps) {
+const Wrapper = (props: IProps): JSX.Element => {
   const { component, auth = false } = props;
   const { pathname } = useLocation();
   const isLogin = window.localStorage.getItem('isLogin');
@@ -25,4 +24,4 @@ function Wrapper(props: IProps) {
     return component;
   }
 };
-export { Wrapper }
+export default Wrapper;

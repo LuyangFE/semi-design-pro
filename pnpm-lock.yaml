@@ -20,6 +20,9 @@ dependencies:
   autoprefixer:
     specifier: ^10.4.19
     version: 10.4.19(postcss@8.4.38)
+  echarts:
+    specifier: ^5.5.0
+    version: 5.5.0
   echarts-for-react:
     specifier: ^3.0.2
     version: 3.0.2(echarts@5.5.0)(react@18.2.0)
