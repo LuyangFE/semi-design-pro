@@ -3,7 +3,7 @@ import { RouteObject, useRoutes } from 'react-router-dom';
 import { Button, Empty, Spin } from '@douyinfe/semi-ui';
 import { IconConfig, IconNavigation } from '@douyinfe/semi-icons-lab';
 import { IllustrationNotFound, IllustrationNotFoundDark } from '@douyinfe/semi-illustrations';
-import { Wrapper } from './wrapper';
+import Wrapper from './wrapper';
 import { IconAlertTriangle, IconArticle, IconEdit, IconList } from '@douyinfe/semi-icons';
 
 // 使用懒加载导入页面组件
