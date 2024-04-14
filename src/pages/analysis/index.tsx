@@ -18,8 +18,8 @@ import ReactEChartsCore from 'echarts-for-react/lib/core'
 import { anlyanisAccessOption, anlyanisPayOption, anlyanisSalesOption } from '@/src/common/echart-option'
 // import './index.scss'
 
-const { Item } = Descriptions
-const { Title } = Typography
+const { Item } = Descriptions;
+const { Title } = Typography;
 
 const listData = [
 	{
