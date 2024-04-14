@@ -4,6 +4,9 @@
 
 - UI组件使用Semi UI + ECharts
 
+<img width="1435" alt="image" src="https://github.com/18852819321/Semi-UI-Pro/assets/58989501/a3c2d2ad-6b84-4179-acb5-aea6750fd354">
+
+
 ## ✨ 特性
 
 - 💎 **Hooks**: 使用最新的 react hooks API 代替传统的 class API
