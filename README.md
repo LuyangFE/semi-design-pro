@@ -1,4 +1,4 @@
-<h1 align="center">React Semi UI Pro</h1>
+<h1 align="center">React Semi Design Pro</h1>
 
 - 基于React Hooks + Vite + Typescript构建的管理后台项目
 
