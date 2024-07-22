@@ -23,7 +23,7 @@ export function sendMessage() {
       temperature: 0.7
     },
     headers: {
-      authorization: 'sk-f2ZExBwEp5PQlZYXrIDJrRmF8cmfyQLeuNhvX0GtE5XLPZfV'
+      authorization: '自己的authorization'
     }
   })
 }
