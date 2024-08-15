@@ -1,8 +1,7 @@
 import React, { FC, lazy, ReactElement, Suspense } from 'react';
 import { RouteObject, useRoutes } from 'react-router-dom';
-import { Button, Empty, Spin } from '@douyinfe/semi-ui';
+import { Spin } from '@douyinfe/semi-ui';
 import { IconConfig, IconNavigation } from '@douyinfe/semi-icons-lab';
-import { IllustrationNotFound, IllustrationNotFoundDark } from '@douyinfe/semi-illustrations';
 import Wrapper from './wrapper';
 import { IconAlertTriangle, IconArticle, IconEdit, IconList } from '@douyinfe/semi-icons';
 

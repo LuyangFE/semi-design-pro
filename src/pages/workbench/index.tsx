@@ -11,7 +11,7 @@ const { Title } = Typography;
 const Workbench = () => {
 
   return (
-    <div>
+    <div className='px-8 py-6'>
       <Row gutter={16}>
         <Col span={18} className='flex flex-col gap-8'>
           <OverviewStatic treated={203} ongoing={301} onWaiting={86} />

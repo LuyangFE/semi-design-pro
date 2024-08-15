@@ -34,12 +34,14 @@ const DetailCommon = () => {
     { key: '认证状态', value: '未认证' },
 ];
   return (
-    <div className='bg-[var(--semi-color-bg-0)] p-4 rounded'>
-      <Descriptions layout="horizontal" align="plain" data={data} column={3} />
-      <Divider margin={32} />
-      <Descriptions layout="horizontal" align="plain" data={data2} column={4} />
-      <Divider margin={32} />
-      <Descriptions data={data} column={2} />
+    <div className="px-8 py-6">
+      <div className='bg-[var(--semi-color-bg-0)] p-4 rounded'>
+        <Descriptions layout="horizontal" align="plain" data={data} column={3} />
+        <Divider margin={32} />
+        <Descriptions layout="horizontal" align="plain" data={data2} column={4} />
+        <Divider margin={32} />
+        <Descriptions data={data} column={2} />
+      </div>
     </div>
   );
 };

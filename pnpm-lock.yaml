@@ -6,16 +6,16 @@ settings:
 
 dependencies:
   '@douyinfe/semi-icons':
-    specifier: ^2.55.5
+    specifier: ^2.56.3
     version: 2.56.3(react@18.2.0)
   '@douyinfe/semi-icons-lab':
-    specifier: ^2.55.5
+    specifier: ^2.56.3
     version: 2.56.3(react-dom@18.2.0)(react@18.2.0)
   '@douyinfe/semi-illustrations':
     specifier: ^2.55.5
     version: 2.56.3(react@18.2.0)
   '@douyinfe/semi-ui':
-    specifier: ^2.55.5
+    specifier: ^2.56.3
     version: 2.56.3(react-dom@18.2.0)(react@18.2.0)
   autoprefixer:
     specifier: ^10.4.19

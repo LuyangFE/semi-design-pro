@@ -11,14 +11,14 @@ const SearchList = () => {
       <div className='px-12 pt-8'>
         <Title heading={3}>搜索列表</Title>
       </div>
-      <div className='flex flex-col items-center w-full gap-8 px-12 mt-12 pb-12'>
+      <div className='flex flex-col items-center w-full gap-8 px-12 pb-12 mt-12'>
         <Input
           size='large'
-          className='max-w-[500px] '
+          className='max-w-[500px]'
           placeholder='搜索...'
           showClear
           suffix={
-            <Button size='large' icon={<IconSearch />} theme='solid' iconPosition='right'>搜索</Button>
+            <Button size='large' icon={<IconSearch style={{ color: 'var(--semi-color-white)'}} />} theme='solid' iconPosition='right'>搜索</Button>
           }
         />
         <Filter />

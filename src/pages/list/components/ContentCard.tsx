@@ -5,7 +5,7 @@ import headImg from '@/src/assets/avatar.jpg';
 const { Title, Text } = Typography;
 export const ContentCard = () => {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full p-4">
       <div className='flex flex-col gap-4'>
         <Title heading={4}>Semi UI</Title>
         <div className='flex gap-2'>

@@ -9,12 +9,16 @@ const { Title, Text } = Typography;
 export const Content = () => {
   const [{ data, loading}] = useService(() => getList(20))
   return (
-    <div className="w-full bg-[var(--semi-color-bg-0)] rounded-xl p-6 flex flex-col shadow-md">
-      <Spin spinning={loading} />
+    <div className="w-full bg-[var(--semi-color-bg-0)] rounded-xl flex flex-col shadow-md">
+      {loading && (
+        <div className="flex items-center justify-center w-full h-full my-8">
+          <Spin spinning={loading} />
+        </div>
+      )}
       {data && data.map((item) => (
         <div key={item}>
           <ContentCard />
-          {item !== 19 && <Divider margin={24} />}
+          {item !== 19 && <Divider margin={8} />}
         </div>
       ))}
     </div>

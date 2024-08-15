@@ -11,6 +11,7 @@ import {
 import { OptionProps } from "@douyinfe/semi-ui/lib/es/select";
 import Option from "@douyinfe/semi-ui/lib/es/select/option";
 import { JSX } from "react/jsx-runtime";
+import styles from '../index.module.scss';
 
 const { Text } = Typography;
 
@@ -99,7 +100,7 @@ export const Filter = () => {
   };
   return (
     <div className="w-full bg-[var(--semi-color-bg-0)] rounded-xl p-6 flex flex-col shadow-md">
-      <div className="flex items-center gap-8">
+      <div className={`${styles.checkBoxGroup} flex items-center gap-8`}>
         <Text className="text-nowrap">所属类目:</Text>
         <CheckboxGroup
           type="pureCard"
@@ -108,7 +109,9 @@ export const Filter = () => {
           className="flex flex-wrap overflow-auto"
         >
           {[...Array(40).keys()].map((item) => (
-            <Checkbox className="text-nowrap" value={item}>类目{item}</Checkbox>
+            <Checkbox key={item} className="text-nowrap" value={item}>
+              <div className="flex items-center justify-center w-12">类目{item + 1}</div>
+            </Checkbox>
           ))}
         </CheckboxGroup>
       </div>

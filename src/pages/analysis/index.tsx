@@ -59,7 +59,7 @@ const Index: React.FC = () => {
 	setTimeout(() => setLoading(false), 1000)
 
 	return (
-		<div>
+		<div className='px-8 py-6'>
 			<div>
 				<Row gutter={20}>
 					<Col span={6}>

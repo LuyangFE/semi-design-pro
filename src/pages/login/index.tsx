@@ -24,14 +24,14 @@ const Login = () => {
         className='h-10'
         prefix={<IconUser />}
         showClear
-        placeholder={"请输入用户名"}
+        placeholder={"请输入用户名(admin)"}
         onChange={(e) => setAccount(e)}
       />
       <Input
         className='h-10'
         prefix={<IconKey />}
         showClear
-        placeholder={"请输入密码"}
+        placeholder={"请输入密码(111111)"}
         mode='password'
         onChange={(e) => setPassword(e)}
       />

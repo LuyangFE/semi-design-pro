@@ -9,10 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@douyinfe/semi-icons": "^2.55.5",
-    "@douyinfe/semi-icons-lab": "^2.55.5",
+    "@douyinfe/semi-icons": "^2.56.3",
+    "@douyinfe/semi-icons-lab": "^2.56.3",
     "@douyinfe/semi-illustrations": "^2.55.5",
-    "@douyinfe/semi-ui": "^2.55.5",
+    "@douyinfe/semi-ui": "^2.56.3",
     "autoprefixer": "^10.4.19",
     "axios": "^1.7.2",
     "echarts": "^5.5.0",
