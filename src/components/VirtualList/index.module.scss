@@ -1,0 +1,12 @@
+.spin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100% !important;
+  width: 100% !important;
+  :global {
+    .semi-spin-wrapper {
+      width: fit-content !important;
+    }
+  }
+}

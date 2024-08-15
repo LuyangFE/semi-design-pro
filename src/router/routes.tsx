@@ -21,6 +21,7 @@ const CommonForm = lazy(() => import('@/src/pages/form'));
 const DynamicForm = lazy(() => import('@/src/pages/form/dynamicForm'));
 
 const SearchList = lazy(() => import('@/src/pages/list'));
+const VirtualList = lazy(() => import('@/src/pages/list/virtualList'));
 
 const DetailCommon = lazy(() => import('@/src/pages/detail'));
 
@@ -73,6 +74,10 @@ export const MenuRoutes: IRouters[] = [
       {
         itemKey: '/list/search',
         text: '搜索列表'
+      },
+      {
+        itemKey: '/list/virtual',
+        text: '虚拟列表'
       }
     ]
   },
@@ -139,6 +144,10 @@ const routers: RouteObject[] = [
       {
         path: 'list/search',
         element: <Wrapper component={<SearchList />} />
+      },
+      {
+        path: 'list/virtual',
+        element: <Wrapper component={<VirtualList />} />
       },
       {
         path: 'detail/common',

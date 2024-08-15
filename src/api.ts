@@ -8,6 +8,14 @@ export function getMaterialList() {
   })
 }
 
+export function getList(number: number): Promise<number[]> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve([...Array(number).keys()])
+    }, 1500);
+  })
+}
+
 export function sendMessage() {
   return axios({
     url: '/api/v1/chat/completions',

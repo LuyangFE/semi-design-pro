@@ -167,7 +167,7 @@ export default function Layout() {
             }}
           />
         </Sider>
-        <Content className="px-8 py-6">
+        <Content className="px-8 py-6 overflow-auto" style={{ height: "calc(100vh - 48px)" }}>
           <Suspense
             fallback={
               <div className="flex items-center justify-center w-screen h-screen">
