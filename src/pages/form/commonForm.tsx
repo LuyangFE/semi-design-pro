@@ -24,77 +24,81 @@ const {
 } = Form;
 
 const initValues = {
-  name: 'semi',
-  business: ['ulikeCam'],
-  role: 'ued',
+  name: "semi",
+  business: ["ulikeCam"],
+  role: "ued",
   switch: true,
   files: [
-      {
-          uid: '1',
-          name: 'vigo.png',
-          status: 'success',
-          size: '130KB',
-          preview: true,
-          url: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/vigo.png'
-      },
-      {
-          uid: '2',
-          name: 'resso.jpeg',
-          status: 'validateFail',
-          size: '222KB',
-          percent: 50,
-          preview: true,
-          fileInstance: new File([new ArrayBuffer(2048)], 'resso.jpeg', { type: 'image/jpeg' }),
-          url: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/Resso.png'
-      },
-      {
-          uid: '3',
-          name: 'dy.jpeg',
-          status: 'uploading',
-          size: '222KB',
-          percent: 50,
-          preview: true,
-          fileInstance: new File([new ArrayBuffer(2048)], 'dy.jpeg', { type: 'image/jpeg' }),
-          url: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/dy.png'
-      }
-  ]
-}
+    {
+      uid: "1",
+      name: "vigo.png",
+      status: "success",
+      size: "130KB",
+      preview: true,
+      url: "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/vigo.png",
+    },
+    {
+      uid: "2",
+      name: "resso.jpeg",
+      status: "validateFail",
+      size: "222KB",
+      percent: 50,
+      preview: true,
+      fileInstance: new File([new ArrayBuffer(2048)], "resso.jpeg", {
+        type: "image/jpeg",
+      }),
+      url: "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/Resso.png",
+    },
+    {
+      uid: "3",
+      name: "dy.jpeg",
+      status: "uploading",
+      size: "222KB",
+      percent: 50,
+      preview: true,
+      fileInstance: new File([new ArrayBuffer(2048)], "dy.jpeg", {
+        type: "image/jpeg",
+      }),
+      url: "https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/dy.png",
+    },
+  ],
+};
 
 const treeData = [
   {
-      label: '亚洲',
-      value: 'Asia',
-      key: '0',
-      children: [
+    label: "亚洲",
+    value: "Asia",
+    key: "0",
+    children: [
+      {
+        label: "中国",
+        value: "China",
+        key: "0-0",
+        children: [
           {
-              label: '中国',
-              value: 'China',
-              key: '0-0',
-              children: [
-                  {
-                      label: '北京',
-                      value: 'Beijing',
-                      key: '0-0-0',
-                  },
-                  {
-                      label: '上海',
-                      value: 'Shanghai',
-                      key: '0-0-1',
-                  },
-              ],
+            label: "北京",
+            value: "Beijing",
+            key: "0-0-0",
           },
-      ],
+          {
+            label: "上海",
+            value: "Shanghai",
+            key: "0-0-1",
+          },
+        ],
+      },
+    ],
   },
   {
-      label: '北美洲',
-      value: 'North America',
-      key: '1',
-  }
+    label: "北美洲",
+    value: "North America",
+    key: "1",
+  },
 ];
-const style = { width: '90%' };
+const style = { width: "90%" };
 const CommonForm = () => {
   return (
-    <div className='bg-[var(--semi-color-bg-0)] p-4'>
+    <div className="bg-[var(--semi-color-bg-0)] p-4">
       <Form
         initValues={initValues}
         style={{ padding: 10, width: "100%" }}

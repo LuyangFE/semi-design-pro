@@ -1,11 +1,9 @@
 import React from "react";
-import { Avatar, Divider, Spin, Tag, Typography } from "@douyinfe/semi-ui";
-import headImg from "@/src/assets/avatar.jpg";
+import { Divider, Spin } from "@douyinfe/semi-ui";
 import { ContentCard } from "./ContentCard";
 import useService from "@/src/hooks/useService";
 import { getList } from "@/src/api";
 
-const { Title, Text } = Typography;
 export const Content = () => {
   const [{ data, loading}] = useService(() => getList(20))
   return (

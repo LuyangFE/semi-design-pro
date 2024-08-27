@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar, Tag, Typography } from '@douyinfe/semi-ui';
-import headImg from '@/src/assets/avatar.jpg';
+import xiaoxiaoguai from '@/src/assets/userHeaders/xiaoxiaoguai.jpg';
 
 const { Title, Text } = Typography;
 export const ContentCard = () => {
@@ -18,8 +18,8 @@ export const ContentCard = () => {
           </Text>
         </div>
         <div className='flex items-center gap-4'>
-          <Avatar size='small' src={headImg} />
-          <Text link >彭于晏</Text>
+          <Avatar size='small' src={xiaoxiaoguai} />
+          <Text link >小小怪下士</Text>
           <Text type='secondary' >发布在</Text>
           <Text link={{ href: 'https://semi.design/zh-CN' }} >https://semi.design/zh-CN</Text>
           <Text type='quaternary' className='ml-12' >2024-04-15 19:45</Text>

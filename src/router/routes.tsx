@@ -3,7 +3,7 @@ import { RouteObject, useRoutes } from 'react-router-dom';
 import { Spin } from '@douyinfe/semi-ui';
 import { IconConfig, IconNavigation } from '@douyinfe/semi-icons-lab';
 import Wrapper from './wrapper';
-import { IconAlertTriangle, IconArticle, IconEdit, IconList } from '@douyinfe/semi-icons';
+import { IconAlertTriangle, IconArticle, IconEdit, IconGridView1, IconList } from '@douyinfe/semi-icons';
 
 // 使用懒加载导入页面组件
 const Layout = lazy(() => import('@/src/pages/layout'));
@@ -23,6 +23,8 @@ const SearchList = lazy(() => import('@/src/pages/list'));
 const VirtualList = lazy(() => import('@/src/pages/list/virtualList'));
 
 const DetailCommon = lazy(() => import('@/src/pages/detail'));
+
+const Table = lazy(() => import('@/src/pages/table'));
 
 const NotFond = lazy(() => import('@/src/pages/exception/404'));
 const NoAuth = lazy(() => import('@/src/pages/exception/403'));
@@ -48,6 +50,17 @@ export const MenuRoutes: IRouters[] = [
         itemKey: '/dashboard/workbench',
         text: '工作台'
       },
+    ]
+  },
+  {
+    itemKey: '/table',
+    icon: <IconGridView1 />,
+    text: '表格页',
+    items: [
+      {
+        itemKey: '/table/basic',
+        text: '基础表格'
+      }
     ]
   },
   {
@@ -151,6 +164,10 @@ const routers: RouteObject[] = [
       {
         path: 'detail/common',
         element: <Wrapper component={<DetailCommon />} />
+      },
+      {
+        path: 'table/basic',
+        element: <Wrapper component={<Table />} />
       }
     ]
   },

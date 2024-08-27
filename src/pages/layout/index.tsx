@@ -15,7 +15,7 @@ import {
   IconSetting,
   IconBell,
 } from "@douyinfe/semi-icons";
-import avatarImg from "@/src/assets/avatar.jpg";
+import avatarImg from "@/src/assets/userHeaders/dadaguai.jpg";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { MenuRoutes } from "@/src/router/routes";
 import { OnSelectedData } from "@douyinfe/semi-ui/lib/es/navigation";
@@ -167,7 +167,7 @@ export default function Layout() {
             }}
           />
         </Sider>
-        <Content className="h-screen overflow-auto">
+        <Content className="overflow-auto" style={{ height: 'calc(100vh - 60px)' }}>
           <Suspense
             fallback={
               <div className="flex items-center justify-center w-screen h-screen">

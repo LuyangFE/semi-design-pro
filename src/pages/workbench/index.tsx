@@ -20,7 +20,7 @@ const Workbench = () => {
           <CardGroups />
         </Col>
         <Col span={6} className='flex flex-col gap-8'>
-          <UserInfo name='彭于晏' title='前端工程师' />
+          <UserInfo name='大大怪将军' title='前端工程师' />
           <DateOverview />
           <Entrance />
         </Col>
