@@ -15,7 +15,7 @@ import {
   IconSetting,
   IconBell,
 } from "@douyinfe/semi-icons";
-import avatarImg from "@/src/assets/avatar.jpg";
+import avatarImg from "@/src/assets/userHeaders/dadaguai.jpg";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { MenuRoutes } from "@/src/router/routes";
 import { OnSelectedData } from "@douyinfe/semi-ui/lib/es/navigation";

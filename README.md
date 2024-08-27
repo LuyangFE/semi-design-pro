@@ -18,6 +18,9 @@
 
 ## 更新日志
 
+- 2024-08-27: 
+  - 新增：Table页面
+
 - 2024-08-15: 
   - 新增：useService hook
   - 新增：虚拟列表组件 VirtualList
